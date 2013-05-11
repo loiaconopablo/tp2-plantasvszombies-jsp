@@ -4,4 +4,20 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+		<servlet-name>searchServlet</servlet-name>
+		<servlet-class>controllers.SearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>searchServlet</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+  
+  <taglib>
+		<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+		<taglib-location>c.tld</taglib-location>
+	</taglib>
+
+
 </web-app>
