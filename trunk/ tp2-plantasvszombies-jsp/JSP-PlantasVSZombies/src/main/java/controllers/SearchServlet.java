@@ -34,9 +34,9 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 			throws ServletException, IOException {
+		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
 		String nombre = request.getParameter("nombre");
 		
-		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
 	    List<Semilla> semillas = jardinZen.getJardinZen().buscarEnTerrestre(nombre); //busca de la semilla;
 		request.getSession().setAttribute("semillas", semillas);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -44,6 +44,7 @@ public class SearchServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
 		this.doPost(request, response);
 	}
 	
