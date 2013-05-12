@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.uqbar.commons.model.UserException;
 
+import plantasVsZombies.AdministradorJardinZen;
+import plantaszombies.Jardin;
+import plantaszombies.JardinZen;
+import plantaszombies.Partida;
 import plantaszombies.Semilla;
 
 
@@ -32,9 +36,10 @@ public class SearchServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String nombre = request.getParameter("nombre");
 		
-	//List<Semilla> semillas= //busca de la semilla;
-//		request.getSession().setAttribute("libros", libros);
-//		request.getRequestDispatcher("index.jsp").forward(request, response);
+		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
+	    List<Semilla> semillas = jardinZen.getJardinZen().buscarEnTerrestre(nombre); //busca de la semilla;
+		request.getSession().setAttribute("semillas", semillas);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
