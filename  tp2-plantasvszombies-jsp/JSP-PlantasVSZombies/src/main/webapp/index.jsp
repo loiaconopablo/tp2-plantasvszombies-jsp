@@ -23,12 +23,16 @@
 				<tr>
 					<th>#</th>
 					<th>Nombre</th>
+					<th>Puntos de daño</th>
+					<th>Capacidad defensiva</th>
 				</tr>
 				<c:forEach items="${sessionScope.semillas}" var="semilla"
 					varStatus="status">
 					<tr>
 						<td>${status.count}</td>
 						<td>${semilla.nombre}</td>
+						<td>${semilla.puntosDeDanio}</td>
+						<td>${semilla.capacidadDefensiva}</td>
 					</tr>
 				</c:forEach>
 			</table>
