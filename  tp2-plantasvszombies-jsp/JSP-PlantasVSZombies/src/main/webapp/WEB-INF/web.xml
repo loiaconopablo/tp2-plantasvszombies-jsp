@@ -9,25 +9,22 @@
 		<servlet-name>searchServlet</servlet-name>
 		<servlet-class>controllers.SearchServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>searchServlet</servlet-name>
-		<url-pattern>/search</url-pattern>
-	</servlet-mapping>
-	
-	
 	<servlet>
 		<servlet-name>IrAlOtroJardinServlet</servlet-name>
 		<servlet-class>controllers.IrAlOtroJardinServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>IrAlOtroJardinServlet</servlet-name>
-		<url-pattern>/irAlOtroJardin</url-pattern>
-	</servlet-mapping>
-	
 	<servlet>
 		<servlet-name>MejoraServlet</servlet-name>
 		<servlet-class>controllers.MejoraServlet</servlet-class>
 	</servlet>
+	<servlet-mapping>
+		<servlet-name>searchServlet</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>IrAlOtroJardinServlet</servlet-name>
+		<url-pattern>/irAlOtroJardin</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>MejoraServlet</servlet-name>
 		<url-pattern>/mejorarPlanta</url-pattern>
