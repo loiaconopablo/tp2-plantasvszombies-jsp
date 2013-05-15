@@ -9,13 +9,15 @@
 <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
-	<h3>Jardin Zen</h3><!--  <font face="Impact" color="green" size=50>Jardin Zen</font>  -->
+	<c:set var="admin" value="${sessionScope.adminAppModel}"></c:set>
+
+	<h3>Jardin Zen - ${admin.jardinSelect}</h3>
 	<hr color="Green" width="100%">
 	<form method="get" action="search">
 		Planta:<input type="text" name="nombre" value="${param.nombre}" /> <input
 			type="submit" value="Buscar" />
 	</form>
-		<c:if test="${sessionScope.semillas != null}">
+		<c:if test="${admin.semillasSelect != null}">
 			<h2>Respuestas:</h2>
 			<table>
 				<tr>
@@ -25,10 +27,10 @@
 					<th>Capacidad defensiva</th>
 				</tr>
 				
-				<c:forEach items="${sessionScope.semillas}" var="semilla"
+				<c:forEach items="${admin.semillasSelect}" var="semilla"
 					varStatus="status">
 					<tr>
-						<td>${status.count}</td>
+						<td>${status.count}<input type="radio" name="plantaSeleccionada" value="${semilla.nombre}" /></td>
 						<td>${semilla.nombre}</td>
 						<td>${semilla.puntosDeDanio}</td>
 						<td>${semilla.capacidadDefensiva}</td>

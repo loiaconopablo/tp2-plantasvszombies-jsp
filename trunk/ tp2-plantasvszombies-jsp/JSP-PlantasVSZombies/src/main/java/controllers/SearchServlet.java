@@ -32,27 +32,26 @@ public class SearchServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, 
-			HttpServletResponse response) 
-			throws ServletException, IOException {
-		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
-		// Adapta los parámetros del request
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		String nombre = request.getParameter("nombre");
-		//Terreno tipoTerreno = request.get?¿(tipoTerreno); Consultar como hacer para no tener dos serverlets!!!
-		
-		// Delegar en los objetos que efectivamente procesan el pedido
-	    List<Semilla> semillas = jardinZen.getJardinZen().buscarEnTerrestre(nombre); //busca de la semilla;
+		String ordenadoPor = request.getParameter("ordenadoPor");
+
+		//busca de la semilla;
+		AdministradorJardinZen administrador = getAdministradorJardinZen(request);
+		administrador.buscar(nombre, ordenadaPor);
 	    
-	    // Guardo el estado que quiero comunicar a la vista
-		request.getSession().setAttribute("semillas", semillas);
-		
-		// Delego a la vista
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
+
+	protected AdministradorJardinZen getAdministradorJardinZen(HttpServletRequest request) {
+		if (request.getSession().getAttribute("adminAppModel") == null) {
+			request.getSession().setAttribute("adminAppModel", new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2)))));
+		}
+		return (AdministradorJardinZen) request.getSession().getAttribute("adminAppModel");
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		
 		this.doPost(request, response);
 	}
 	
