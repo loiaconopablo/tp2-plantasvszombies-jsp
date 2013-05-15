@@ -16,6 +16,7 @@ import org.uqbar.commons.model.UserException;
 import plantasVsZombies.AdministradorJardinZen;
 import plantaszombies.Jardin;
 import plantaszombies.JardinZen;
+import plantaszombies.Mejora;
 import plantaszombies.Partida;
 import plantaszombies.Terreno;
 import plantaszombies.Semilla;
@@ -25,7 +26,7 @@ import plantaszombies.Semilla;
  * @author Mariano Varela, Pablo Loiacono.
  *
  */
-public class SearchServlet extends HttpServlet {
+public class MejorasServlet extends HttpServlet {
 	
 	/**
 	 * 
@@ -37,17 +38,17 @@ public class SearchServlet extends HttpServlet {
 			throws ServletException, IOException {
 		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
 		// Adapta los parámetros del request
-		String nombre = request.getParameter("nombre");
-		//Terreno tipoTerreno = request.get?¿(tipoTerreno); Consultar como hacer para no tener dos serverlets!!!
+		//String nombre = request.getParameter("nombre");
+		//Preguntar como obtener el valor de un radial
 		
 		// Delegar en los objetos que efectivamente procesan el pedido
-	    List<Semilla> semillas = jardinZen.getJardinZen().buscarEnTerrestre(nombre); //busca de la semilla;
+	    List<Mejora> semillas = jardinZen.getJardinZen().getMejorasPredefinidas(); //busca las mejoras
 	    
 	    // Guardo el estado que quiero comunicar a la vista
-		request.getSession().setAttribute("semillas", semillas);
+		request.getSession().setAttribute("mejoras", semillas);
 		
 		// Delego a la vista
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("mejoras.jsp").forward(request, response);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 

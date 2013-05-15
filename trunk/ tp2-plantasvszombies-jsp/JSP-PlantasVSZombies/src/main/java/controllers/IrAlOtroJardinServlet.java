@@ -17,7 +17,6 @@ import plantasVsZombies.AdministradorJardinZen;
 import plantaszombies.Jardin;
 import plantaszombies.JardinZen;
 import plantaszombies.Partida;
-import plantaszombies.Terreno;
 import plantaszombies.Semilla;
 
 
@@ -25,7 +24,7 @@ import plantaszombies.Semilla;
  * @author Mariano Varela, Pablo Loiacono.
  *
  */
-public class SearchServlet extends HttpServlet {
+public class IrAlOtroJardinServlet extends HttpServlet {
 	
 	/**
 	 * 
@@ -36,18 +35,11 @@ public class SearchServlet extends HttpServlet {
 			HttpServletResponse response) 
 			throws ServletException, IOException {
 		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
-		// Adapta los parámetros del request
 		String nombre = request.getParameter("nombre");
-		//Terreno tipoTerreno = request.get?¿(tipoTerreno); Consultar como hacer para no tener dos serverlets!!!
 		
-		// Delegar en los objetos que efectivamente procesan el pedido
-	    List<Semilla> semillas = jardinZen.getJardinZen().buscarEnTerrestre(nombre); //busca de la semilla;
-	    
-	    // Guardo el estado que quiero comunicar a la vista
+	    List<Semilla> semillas = jardinZen.getJardinZen().buscarEnAcuatica(nombre); //busca de la semilla;
 		request.getSession().setAttribute("semillas", semillas);
-		
-		// Delego a la vista
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("resultadoAcuatico.jsp").forward(request, response);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
