@@ -9,14 +9,12 @@
 <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
-	<h2>Jardin Zen</h2>
-
+	<h3>Jardin Zen</h3><!--  <font face="Impact" color="green" size=50>Jardin Zen</font>  -->
+	<hr color="Green" width="100%">
 	<form method="get" action="search">
 		Planta:<input type="text" name="nombre" value="${param.nombre}" /> <input
 			type="submit" value="Buscar" />
 	</form>
-
-	<form method="get" action="irAOtroJardin">
 		<c:if test="${sessionScope.semillas != null}">
 			<h2>Respuestas:</h2>
 			<table>
@@ -26,6 +24,7 @@
 					<th>Puntos de daño</th>
 					<th>Capacidad defensiva</th>
 				</tr>
+				
 				<c:forEach items="${sessionScope.semillas}" var="semilla"
 					varStatus="status">
 					<tr>
@@ -39,11 +38,24 @@
 		</c:if>
 
 		<br/>
+				
+		<!--
+		<button type="button" action="irAlOtroJardin">IrAlOtroJardin</button>
+		<button type="button" action="MejorarPlanta">MejorarPlanta</button>		
 		
-		<input type="submit" value="MejorarPlanta" /> 
-		<input type="submit" value="IrAlOtroJardin" />
-	</form>
+		O colocar lo de abajo en una tabla, pero me toma la vista igual que la de arriba
+		
+		-->
+		
 
-
+	 <form method="get" action="irAlOtroJardin">
+		<input type="submit" value="IrAlOtroJardin" /> 
+		</form>
+		
+	<form method="get" action="mejorarPlanta">
+	<input type="submit" value="MejorarPlanta" /> 	
+		</form>
+	
+	
 </body>
 </html>
