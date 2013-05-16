@@ -38,7 +38,9 @@ public class SearchServlet extends HttpServlet {
 
 		//busca de la semilla;
 		AdministradorJardinZen administrador = getAdministradorJardinZen(request);
-		administrador.buscar(nombre, ordenadaPor);
+	//	administrador.getJardinZen().search(nombre, administrador.getSemillasSelect());
+		administrador.buscar(nombre,ordenadoPor);
+		
 	    
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
@@ -46,6 +48,7 @@ public class SearchServlet extends HttpServlet {
 	protected AdministradorJardinZen getAdministradorJardinZen(HttpServletRequest request) {
 		if (request.getSession().getAttribute("adminAppModel") == null) {
 			request.getSession().setAttribute("adminAppModel", new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2)))));
+		
 		}
 		return (AdministradorJardinZen) request.getSession().getAttribute("adminAppModel");
 	}
