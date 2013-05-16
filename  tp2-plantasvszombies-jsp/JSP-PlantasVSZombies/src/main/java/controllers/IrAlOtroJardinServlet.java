@@ -17,36 +17,41 @@ import plantasVsZombies.AdministradorJardinZen;
 import plantaszombies.Jardin;
 import plantaszombies.JardinZen;
 import plantaszombies.Partida;
+import plantaszombies.Terreno;
 import plantaszombies.Semilla;
-
 
 /**
  * @author Mariano Varela, Pablo Loiacono.
  *
  */
-public class IrAlOtroJardinServlet extends HttpServlet {
-	
+//public class IrAlOtroJardinServlet extends HttpServlet {
+public class IrAlOtroJardinServlet extends SearchServlet{	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, 
-			HttpServletResponse response) 
-			throws ServletException, IOException {
-		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
-		String nombre = request.getParameter("nombre");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
+
+		AdministradorJardinZen administrador = getAdministradorJardinZen(request);
+		administrador.irAlOtroJardin();
 		
-	    List<Semilla> semillas = jardinZen.getJardinZen().buscarEnAcuatica(nombre); //busca de la semilla;
-		request.getSession().setAttribute("semillas", semillas);
-		request.getRequestDispatcher("resultadoAcuatico.jsp").forward(request, response);
+	    
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		
-		this.doPost(request, response);
-	}
+
+//	protected AdministradorJardinZen getAdministradorJardinZen(HttpServletRequest request) {
+//		if (request.getSession().getAttribute("adminAppModel") == null) {
+//			request.getSession().setAttribute("adminAppModel", new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2)))));
+//		
+//		}
+//		return (AdministradorJardinZen) request.getSession().getAttribute("adminAppModel");
+//	}
+//	
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+//			throws ServletException, IOException {
+//		this.doPost(request, response);
+//	}
 	
 	
 

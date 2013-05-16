@@ -17,14 +17,16 @@
 		Planta:<input type="text" name="nombre" value="${param.nombre}" /> <input
 			type="submit" value="Buscar" />
 	</form>
+		
+		<form method="get" action="mejorarPlanta">
 		<c:if test="${admin.semillasSelect != null}">
 			<h2>Respuestas:</h2>
 			<table>
 				<tr>
 					<th>#</th>
-					<th>Nombre</th>
-					<th>Puntos de daño</th>
-					<th>Capacidad defensiva</th>
+					<th><a href="search?nombre=${param.nombre}&ordenadoPor=nombre">Nombre</a></th>
+					<th><a href="search?nombre=${param.nombre}&ordenadoPor=danio">Puntos De Danio</a></th>
+					<th><a href="search?nombre=${param.nombre}&oordenadoPor=capacidadDefensiva">Capacidad Defensiva</a></th>
 				</tr>
 				
 				<c:forEach items="${admin.semillasSelect}" var="semilla"
@@ -38,26 +40,13 @@
 				</c:forEach>
 			</table>
 		</c:if>
-
-		<br/>
-				
-		<!--
-		<button type="button" action="irAlOtroJardin">IrAlOtroJardin</button>
-		<button type="button" action="MejorarPlanta">MejorarPlanta</button>		
-		
-		O colocar lo de abajo en una tabla, pero me toma la vista igual que la de arriba
-		
-		-->
-		
-
-	 <form method="get" action="irAlOtroJardin">
+	
+		<input type="submit" value="MejorarPlanta" /> 	
+		</form>
+				 <form method="get" action="irAlOtroJardin">
 		<input type="submit" value="IrAlOtroJardin" /> 
 		</form>
 		
-	<form method="get" action="mejorarPlanta">
-	<input type="submit" value="MejorarPlanta" /> 	
-		</form>
-	
 	
 </body>
 </html>
