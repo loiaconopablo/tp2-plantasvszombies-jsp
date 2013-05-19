@@ -26,7 +26,7 @@
 		<url-pattern>/irAlOtroJardin</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>MejoraServlet</servlet-name>
+		<servlet-name>MejorasServlet</servlet-name>
 		<url-pattern>/mejorarPlanta</url-pattern>
 	</servlet-mapping>
 	

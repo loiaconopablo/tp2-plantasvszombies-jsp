@@ -40,13 +40,6 @@ public class IrAlOtroJardinServlet extends SearchServlet{
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-//	protected AdministradorJardinZen getAdministradorJardinZen(HttpServletRequest request) {
-//		if (request.getSession().getAttribute("adminAppModel") == null) {
-//			request.getSession().setAttribute("adminAppModel", new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2)))));
-//		
-//		}
-//		return (AdministradorJardinZen) request.getSession().getAttribute("adminAppModel");
-//	}
 //	
 //	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 //			throws ServletException, IOException {

@@ -36,19 +36,23 @@ public class MejorasServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 			throws ServletException, IOException {
-		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
-		// Adapta los parámetros del request
-		//String nombre = request.getParameter("nombre");
-		//Preguntar como obtener el valor de un radial
 		
-		// Delegar en los objetos que efectivamente procesan el pedido
-	    List<Mejora> semillas = jardinZen.getJardinZen().getMejorasPredefinidas(); //busca las mejoras
-	    
-	    // Guardo el estado que quiero comunicar a la vista
-		request.getSession().setAttribute("mejoras", semillas);
-		
-		// Delego a la vista
 		request.getRequestDispatcher("mejoras.jsp").forward(request, response);
+		
+		
+//		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
+//		// Adapta los parï¿½metros del request
+//		//String nombre = request.getParameter("nombre");
+//		//Preguntar como obtener el valor de un radial
+//		
+//		// Delegar en los objetos que efectivamente procesan el pedido
+//	    List<Mejora> semillas = jardinZen.getJardinZen().getMejorasPredefinidas(); //busca las mejoras
+//	    
+//	    // Guardo el estado que quiero comunicar a la vista
+//		request.getSession().setAttribute("mejoras", semillas);
+//		
+//		// Delego a la vista
+//		request.getRequestDispatcher("mejoras.jsp").forward(request, response);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -57,6 +61,12 @@ public class MejorasServlet extends HttpServlet {
 		this.doPost(request, response);
 	}
 	
-	
+	protected AdministradorJardinZen getAdministradorJardinZen(HttpServletRequest request) {
+		if (request.getSession().getAttribute("adminAppModel") == null) {
+			request.getSession().setAttribute("adminAppModel", new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2)))));
+		
+		}
+		return (AdministradorJardinZen) request.getSession().getAttribute("adminAppModel");
+	}
 
 }
