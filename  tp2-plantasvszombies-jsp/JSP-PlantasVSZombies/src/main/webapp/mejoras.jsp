@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="styles2.css" />
 </head>
 <body>
-	<h3>Jardin Zen - Mejoras</h3><!--  <font face="Impact" color="green" size=50>Jardin Zen</font>  -->
+	<h3>Jardin Zen - Mejoras</h3>
 	<hr color="Green" width="100%">
 	Recursos Disponibles:
 	<table>
