@@ -9,41 +9,47 @@
 <link rel="stylesheet" type="text/css" href="styles2.css" />
 </head>
 <body>
+
+	<c:set var="admin" value="${sessionScope.adminAppModel}"></c:set>
+
 	<h3>Jardin Zen - Mejoras</h3>
-	<hr color="Green" width="100%">
+
 	Recursos Disponibles:
-	<table>
-	<tr>
-	<td> 
-	<form method="get" action="comprar">
-		</form>
-		<c:if test="${sessionScope.mejoras != null}">
-			<h2>Mejoras Disponibles:</h2>
-			<table>
+
+	<div>
+		<h2>Mejoras disponibles:</h2>
+		<table align="left">
+			<form method="get" action="mejorar"></form>
+			<c:if test="${admin.jardinZen.mejorasPredefinidas != null}">
 				<tr>
 					<th>Mejora</th>
 					<th>Costo</th>
 				</tr>
-				
-				<c:forEach items="${sessionScope.mejoras}" var="mejora"
-					varStatus="status">
+
+				<c:forEach items="${sessionScope.jardinZen.mejorasPredefinidas}"
+					var="mejora" varStatus="status">
 					<tr>
 						<td>${mejora.nombre}</td>
 						<td>${mejora.costo}</td>
 					</tr>
 				</c:forEach>
-			</table>
-		</c:if>
+			</c:if>
+			<br />
 
-		<br/>	
-			<input type="submit" value="Mejorar" align="right"/> 
+		</table>
+		<input type="submit" value="Mejorar" align="right" />
 		</form>
-		</td>
-		<td> 
-		La otra Tabla con mejoras compradas
-				
-		</td>
-		</tr>
-	</table>
+		<table align="right">
+			<th>Mejoras compradas</th>
+
+		</table>
+
+	</div>
+
+
+	<form name="input" action="index.jsp" method="post">
+		<input type="submit" value="Ir al JardinZen">
+	</form>
 </body>
 </html>
+

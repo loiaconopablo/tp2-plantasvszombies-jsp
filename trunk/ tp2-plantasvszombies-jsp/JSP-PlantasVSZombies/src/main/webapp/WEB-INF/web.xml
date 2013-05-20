@@ -14,8 +14,8 @@
 		<servlet-class>controllers.IrAlOtroJardinServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>MejoraServlet</servlet-name>
-		<servlet-class>controllers.MejoraServlet</servlet-class>
+		<servlet-name>MejorasServlet</servlet-name>
+		<servlet-class>controllers.MejorasServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>searchServlet</servlet-name>
