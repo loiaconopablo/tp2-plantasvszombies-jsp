@@ -37,6 +37,14 @@ public class MejorasServlet extends HttpServlet {
 			HttpServletResponse response) 
 			throws ServletException, IOException {
 		
+		//levanto los parametros
+		String nombre = request.getParameter("nombre");
+		
+		//delego en el dominio
+		//getAdministradorJardinZen(request).buscarYSetearSemilla(nombre);
+		
+		
+		//genero la vista
 		request.getRequestDispatcher("mejoras.jsp").forward(request, response);
 		
 		
