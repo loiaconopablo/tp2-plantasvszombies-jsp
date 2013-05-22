@@ -48,7 +48,18 @@
 		<input type="submit" value="Mejorar" align="right" />
 		</form>
 		<table align="right">
-			<th>Mejoras compradas</th>
+			<c:if test="${admin.semillaSeleccionada.mejorasAplicadas != null}">
+				<tr>
+					<th>Mejoras compradas</th>
+				</tr>
+				<c:forEach items="${admin.semillaSeleccionada.mejorasAplicadas}"
+					var="mejora" varStatus="status">
+					<tr>
+						<td>${status.count}</td>
+						<td>${mejora.nombre}</td>
+					</tr>
+				</c:forEach>
+			</c:if>
 
 		</table>
 
