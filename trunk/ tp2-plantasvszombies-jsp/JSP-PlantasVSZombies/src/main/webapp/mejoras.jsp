@@ -8,6 +8,13 @@
 <title>Jardin Zen - Mejoras</title>
 <link rel="stylesheet" type="text/css" href="styles2.css" />
 </head>
+<script language= "javascript">
+	
+	function enabledButton(){
+		document.getElementById('mejorarInput').disabled = false;
+	} 
+	
+</script>
 <body>
 
 	<c:set var="admin" value="${sessionScope.adminAppModel}"></c:set>
@@ -24,8 +31,8 @@
 
 	<div>
 		<h2>Mejoras disponibles:</h2>
+			<form method="post" action="mejorarPlanta">
 		<table align="left">
-			<form method="get" action="mejorar"></form>
 			<c:if test="${admin.jardinZen.mejorasPredefinidas != null}">
 				<tr>
 					<th>#</th>
@@ -36,7 +43,7 @@
 					var="mejora" varStatus="status">
 					<tr>
 						<td>${status.count}<input type="radio"
-							name="mejoraSeleccionada" value="${mejora}" /></td>
+							name="mejoraSeleccionada" value="${mejora.nombre}" onclick = "enabledButton()"/></td>
 						<td>${mejora.nombre}</td>
 						<td>${mejora.costo}</td>
 					</tr>
@@ -45,11 +52,12 @@
 			<br />
 
 		</table>
-		<input type="submit" value="Mejorar" align="right" />
+		<input type="submit" value="Mejorar" align="right" id="mejorarInput" disabled />
 		</form>
 		<table align="right">
 			<c:if test="${admin.semillaSeleccionada.mejorasAplicadas != null}">
 				<tr>
+					<th>#</th>
 					<th>Mejoras compradas</th>
 				</tr>
 				<c:forEach items="${admin.semillaSeleccionada.mejorasAplicadas}"

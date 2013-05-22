@@ -8,6 +8,13 @@
 <title>Plantas Vs Zombies</title>
 <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
+<script language= "javascript">
+	
+	function enabledButton(){
+		document.getElementById('mejorarInput').disabled = false;
+	} 
+	
+</script>
 <body>
 	<c:set var="admin" value="${sessionScope.adminAppModel}"></c:set>
 
@@ -32,7 +39,8 @@
 				<c:forEach items="${admin.semillasSelect}" var="semilla"
 					varStatus="status">
 					<tr>
-						<td>${status.count}<input type="radio" name="semillaSeleccionada" value="${semilla.nombre}" /></td>
+						<td>${status.count}<input type="radio" name="semillaSeleccionada" value="${semilla.nombre}" 
+						onclick = "enabledButton()"/></td>
 						<td>${semilla.nombre}</td>
 						<td>${semilla.puntosDeDanio}</td>
 						<td>${semilla.capacidadDefensiva}</td>
@@ -41,7 +49,7 @@
 			</table>
 		</c:if>
 	
-		<input type="submit" value="MejorarPlanta" /> 	
+		<input type="submit" value="MejorarPlanta" id="mejorarInput" disabled /> 	
 		</form>
 				 <form method="get" action="irAlOtroJardin">
 		<input type="submit" value="IrAlOtroJardin" /> 

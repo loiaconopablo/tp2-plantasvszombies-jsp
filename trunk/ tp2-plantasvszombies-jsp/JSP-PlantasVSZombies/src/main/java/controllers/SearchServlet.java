@@ -46,8 +46,10 @@ public class SearchServlet extends HttpServlet {
 	}
 
 	protected AdministradorJardinZen getAdministradorJardinZen(HttpServletRequest request) {
+		
 		if (request.getSession().getAttribute("adminAppModel") == null) {
-			request.getSession().setAttribute("adminAppModel", new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2)))));
+			Jardin jardin = new Jardin(2,2);
+			request.getSession().setAttribute("adminAppModel", new AdministradorJardinZen(new Partida(jardin, new JardinZen(jardin))));
 		
 		}
 		return (AdministradorJardinZen) request.getSession().getAttribute("adminAppModel");

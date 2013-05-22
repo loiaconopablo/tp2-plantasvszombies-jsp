@@ -33,41 +33,39 @@ public class MejorasServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, 
+	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		//levanto los parametros
-		String nombreSemillaSeleccionada = request.getParameter("semillaSeleccionada");
-		//Semilla semillaSellect = buscarSemillaPorNombre(nombreSemillaSeleccionada);
-		
-		//delego en el dominio
-		getAdministradorJardinZen(request).buscarYSetearSemilla(nombreSemillaSeleccionada);
+		actualizarSemillaSeleccionada(request);
 		
 		
 		//genero la vista
 		request.getRequestDispatcher("mejoras.jsp").forward(request, response);
 		
 		
-//		AdministradorJardinZen jardinZen = new AdministradorJardinZen(new Partida(null, new JardinZen(new Jardin(2,2))));
-//		// Adapta los par�metros del request
-//		//String nombre = request.getParameter("nombre");
-//		//Preguntar como obtener el valor de un radial
-//		
-//		// Delegar en los objetos que efectivamente procesan el pedido
-//	    List<Mejora> semillas = jardinZen.getJardinZen().getMejorasPredefinidas(); //busca las mejoras
-//	    
-//	    // Guardo el estado que quiero comunicar a la vista
-//		request.getSession().setAttribute("mejoras", semillas);
-//		
-//		// Delego a la vista
-//		request.getRequestDispatcher("mejoras.jsp").forward(request, response);
+
+	}
+
+	private void actualizarSemillaSeleccionada(HttpServletRequest request) {
+		//levanto los parametros
+		String nombreSemillaSeleccionada = request.getParameter("semillaSeleccionada");
+		
+		//delego en el dominio
+		getAdministradorJardinZen(request).buscarYSetearSemilla(nombreSemillaSeleccionada);
 	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+				
+		String mejoraSeleccionada = request.getParameter("mejoraSeleccionada");
 		
-		this.doPost(request, response);
+		getAdministradorJardinZen(request).buscarYSetearMejora(mejoraSeleccionada);
+		
+		getAdministradorJardinZen(request).comprarMejora();
+		
+		request.getRequestDispatcher("mejoras.jsp").forward(request, response);
+		
 	}
 	
 	protected AdministradorJardinZen getAdministradorJardinZen(HttpServletRequest request) {
