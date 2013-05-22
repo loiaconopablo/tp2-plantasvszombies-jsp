@@ -32,7 +32,7 @@
 				<c:forEach items="${admin.semillasSelect}" var="semilla"
 					varStatus="status">
 					<tr>
-						<td>${status.count}<input type="radio" name="plantaSeleccionada" value="${semilla.nombre}" /></td>
+						<td>${status.count}<input type="radio" name="semillaSeleccionada" value="${semilla.nombre}" /></td>
 						<td>${semilla.nombre}</td>
 						<td>${semilla.puntosDeDanio}</td>
 						<td>${semilla.capacidadDefensiva}</td>

@@ -12,23 +12,24 @@
 
 	<c:set var="admin" value="${sessionScope.adminAppModel}"></c:set>
 
-	<h3>Jardin Zen - Mejoras</h3>
+	<h3>Jardin Zen - Mejoras ${admin.semillaSeleccionada.nombre}</h3>
 
-	Recursos Disponibles:
-
+Recursos Disponibles: ${admin.jardinZen.jardin.recursos}
+	
 	<div>
 		<h2>Mejoras disponibles:</h2>
 		<table align="left">
 			<form method="get" action="mejorar"></form>
 			<c:if test="${admin.jardinZen.mejorasPredefinidas != null}">
 				<tr>
+					<th>#</th>
 					<th>Mejora</th>
 					<th>Costo</th>
 				</tr>
-
-				<c:forEach items="${sessionScope.jardinZen.mejorasPredefinidas}"
+				<c:forEach items="${admin.jardinZen.mejorasPredefinidas}"
 					var="mejora" varStatus="status">
 					<tr>
+						<td>${status.count}<input type="radio" name="mejoraSeleccionada" value="${mejora}" /></td>
 						<td>${mejora.nombre}</td>
 						<td>${mejora.costo}</td>
 					</tr>
@@ -48,8 +49,7 @@
 
 
 	<form name="input" action="index.jsp" method="post">
-		<input type="submit" value="Ir al JardinZen">
+		<input type="submit" value="Volver al JardinZen">
 	</form>
 </body>
 </html>
-
