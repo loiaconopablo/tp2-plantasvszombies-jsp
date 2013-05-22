@@ -12,10 +12,16 @@
 
 	<c:set var="admin" value="${sessionScope.adminAppModel}"></c:set>
 
-	<h3>Jardin Zen - Mejoras ${admin.semillaSeleccionada.nombre}</h3>
+	<h3>Jardin Zen - Mejoras</h3>
 
-Recursos Disponibles: ${admin.jardinZen.jardin.recursos}
-	
+	<div align ="right">
+		${admin.semillaSeleccionada.nombre}<br> 
+		Capacidad defensiva = ${admin.semillaSeleccionada.capacidadDefensiva} <br> 
+		Puntos de daño = ${admin.semillaSeleccionada.puntosDeDanio} 
+	</div>
+
+	Recursos Disponibles: ${admin.jardinZen.jardin.recursos}
+
 	<div>
 		<h2>Mejoras disponibles:</h2>
 		<table align="left">
@@ -29,7 +35,8 @@ Recursos Disponibles: ${admin.jardinZen.jardin.recursos}
 				<c:forEach items="${admin.jardinZen.mejorasPredefinidas}"
 					var="mejora" varStatus="status">
 					<tr>
-						<td>${status.count}<input type="radio" name="mejoraSeleccionada" value="${mejora}" /></td>
+						<td>${status.count}<input type="radio"
+							name="mejoraSeleccionada" value="${mejora}" /></td>
 						<td>${mejora.nombre}</td>
 						<td>${mejora.costo}</td>
 					</tr>
