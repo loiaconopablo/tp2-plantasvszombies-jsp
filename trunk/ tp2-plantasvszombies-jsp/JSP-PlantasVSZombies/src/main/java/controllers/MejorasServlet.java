@@ -38,7 +38,8 @@ public class MejorasServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		//levanto los parametros
-		String nombre = request.getParameter("nombre");
+		String nombreSemillaSeleccionada = request.getParameter("semillaSeleccionada");
+		// Semilla semillaSellect = buscarSemillaPorNombre(nombreSemillaSeleccionada)
 		
 		//delego en el dominio
 		//getAdministradorJardinZen(request).buscarYSetearSemilla(nombre);
