@@ -39,10 +39,10 @@ public class MejorasServlet extends HttpServlet {
 		
 		//levanto los parametros
 		String nombreSemillaSeleccionada = request.getParameter("semillaSeleccionada");
-		// Semilla semillaSellect = buscarSemillaPorNombre(nombreSemillaSeleccionada)
+		//Semilla semillaSellect = buscarSemillaPorNombre(nombreSemillaSeleccionada);
 		
 		//delego en el dominio
-		//getAdministradorJardinZen(request).buscarYSetearSemilla(nombre);
+		getAdministradorJardinZen(request).buscarYSetearSemilla(nombreSemillaSeleccionada);
 		
 		
 		//genero la vista
