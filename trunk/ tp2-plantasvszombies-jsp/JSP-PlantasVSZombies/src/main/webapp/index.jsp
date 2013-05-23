@@ -17,7 +17,7 @@
 </script>
 <body>
 	<c:set var="admin" value="${sessionScope.adminAppModel}"></c:set>
-
+<IMG SRC="http://draving.me/wp-content/uploads/2013/05/Plants-VS-Zombies.png" WIDTH=300 HEIGHT=250 ALT="Logo">		
 	<h3>Jardin Zen - ${admin.jardinSelect}</h3>
 	<hr color="Green" width="100%">
 	<form method="get" action="search">
