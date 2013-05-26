@@ -8,53 +8,60 @@
 <title>Plantas Vs Zombies</title>
 <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
-<script language= "javascript">
+<script language="javascript">
 	
-	function enabledButton(){
+	function enabledButton() {
 		document.getElementById('mejorarInput').disabled = false;
-	} 
-	
+	}
+
 </script>
 <body>
 	<c:set var="admin" value="${sessionScope.adminAppModel}"></c:set>
-<IMG SRC="http://draving.me/wp-content/uploads/2013/05/Plants-VS-Zombies.png" WIDTH=300 HEIGHT=250 ALT="Logo">		
-	<h3>Jardin Zen - ${admin.jardinSelect}</h3>
-	<hr color="Green" width="100%">
-	<form method="get" action="search">
-		Planta:<input type="text" name="nombre" value="${param.nombre}" /> <input
-			type="submit" value="Buscar" />
-	</form>
-		
-		<form method="get" action="mejorarPlanta">
-		<c:if test="${admin.semillasSelect != null}">
-			<h2>Respuestas:</h2>
-			<table>
-				<tr>
-					<th>#</th>
-					<th><a href="search?nombre=${param.nombre}&ordenadoPor=nombre">Nombre</a></th>
-					<th><a href="search?nombre=${param.nombre}&ordenadoPor=danio">Puntos De Danio</a></th>
-					<th><a href="search?nombre=${param.nombre}&oordenadoPor=capacidadDefensiva">Capacidad Defensiva</a></th>
-				</tr>
-				
-				<c:forEach items="${admin.semillasSelect}" var="semilla"
-					varStatus="status">
-					<tr>
-						<td>${status.count}<input type="radio" name="semillaSeleccionada" value="${semilla.nombre}" 
-						onclick = "enabledButton()"/></td>
-						<td>${semilla.nombre}</td>
-						<td>${semilla.puntosDeDanio}</td>
-						<td>${semilla.capacidadDefensiva}</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-	
-		<input type="submit" value="MejorarPlanta" id="mejorarInput" disabled /> 	
-		</form>
-				 <form method="get" action="irAlOtroJardin">
-		<input type="submit" value="IrAlOtroJardin" /> 
-		</form>
-		
-	
+	<IMG
+		SRC="http://draving.me/wp-content/uploads/2013/05/Plants-VS-Zombies.png"
+		WIDTH=300 HEIGHT=250 ALT="Logo">
+		<h3>Jardin Zen - ${admin.jardinSelect}</h3>
+		<hr color="Green" width="100%">
+			<form method="get" action="search">
+				Planta:<input type="text" name="nombre" value="${param.nombre}" />
+				<input type="submit" value="Buscar" />
+			</form>
+
+			<form method="get" action="mejorarPlanta">
+				<c:if test="${admin.semillasSelect != null}">
+					<h2>Respuestas:</h2>
+					<table>
+						<tr>
+							<th>#</th>
+							<th><a
+								href="search?nombre=${param.nombre}&ordenadoPor=nombre">Nombre</a></th>
+							<th><a
+								href="search?nombre=${param.nombre}&ordenadoPor=danio">Puntos
+									De Danio</a></th>
+							<th><a
+								href="search?nombre=${param.nombre}&oordenadoPor=capacidadDefensiva">Capacidad
+									Defensiva</a></th>
+						</tr>
+
+						<c:forEach items="${admin.semillasSelect}" var="semilla"
+							varStatus="status">
+							<tr>
+								<td>${status.count}<input type="radio"
+									name="semillaSeleccionada" value="${semilla.nombre}"
+									onclick="enabledButton()" /></td>
+								<td>${semilla.nombre}</td>
+								<td>${semilla.puntosDeDanio}</td>
+								<td>${semilla.capacidadDefensiva}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:if>
+
+				<input type="submit" value="MejorarPlanta" id="mejorarInput"
+					disabled />
+			</form>
+			<form method="get" action="irAlOtroJardin">
+				<input type="submit" value="IrAlOtroJardin" />
+			</form>
 </body>
 </html>
