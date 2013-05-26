@@ -6,14 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Jardin Zen - Mejoras</title>
-<link rel="stylesheet" type="text/css" href="styles2.css" />
+<link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
-<script language= "javascript">
-	
-	function enabledButton(){
+<script language="javascript">
+
+	function enabledButton() {
 		document.getElementById('mejorarInput').disabled = false;
-	} 
-	
+	}
 </script>
 <body>
 
@@ -21,38 +20,40 @@
 
 	<h3>Jardin Zen - Mejoras</h3>
 
-	<div align ="right">
-		${admin.semillaSeleccionada.nombre}<br> 
-		Capacidad defensiva = ${admin.semillaSeleccionada.capacidadDefensiva} <br> 
-		Puntos de daño = ${admin.semillaSeleccionada.puntosDeDanio} 
+	<div align="right" id="semillaActual">
+		${admin.semillaSeleccionada.nombre}<br> Capacidad defensiva =
+			${admin.semillaSeleccionada.capacidadDefensiva} <br> Puntos de
+				daño = ${admin.semillaSeleccionada.puntosDeDanio} 
 	</div>
 
 	Recursos Disponibles: ${admin.jardinZen.jardin.recursos}
 
 	<div>
 		<h2>Mejoras disponibles:</h2>
-			<form method="post" action="mejorarPlanta">
-		<table align="left">
-			<c:if test="${admin.jardinZen.mejorasPredefinidas != null}">
-				<tr>
-					<th>#</th>
-					<th>Mejora</th>
-					<th>Costo</th>
-				</tr>
-				<c:forEach items="${admin.jardinZen.mejorasPredefinidas}"
-					var="mejora" varStatus="status">
+		<form method="post" action="mejorarPlanta">
+			<table align="left">
+				<c:if test="${admin.jardinZen.mejorasPredefinidas != null}">
 					<tr>
-						<td>${status.count}<input type="radio"
-							name="mejoraSeleccionada" value="${mejora.nombre}" onclick = "enabledButton()"/></td>
-						<td>${mejora.nombre}</td>
-						<td>${mejora.costo}</td>
+						<th>#</th>
+						<th>Mejora</th>
+						<th>Costo</th>
 					</tr>
-				</c:forEach>
-			</c:if>
-			<br />
+					<c:forEach items="${admin.jardinZen.mejorasPredefinidas}"
+						var="mejora" varStatus="status">
+						<tr>
+							<td>${status.count}<input type="radio"
+								name="mejoraSeleccionada" value="${mejora.nombre}"
+								onclick="enabledButton()" /></td>
+							<td>${mejora.nombre}</td>
+							<td>${mejora.costo}</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+				<br />
 
-		</table>
-		<input type="submit" value="Mejorar" align="right" id="mejorarInput" disabled />
+			</table>
+			<input type="submit" value="Mejorar" align="right" id="mejorarInput"
+				disabled />
 		</form>
 		<table align="right">
 			<c:if test="${admin.semillaSeleccionada.mejorasAplicadas != null}">
