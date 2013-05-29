@@ -48,7 +48,7 @@
 
 	<div>
 		<h2>Mejoras disponibles:</h2>
-	<form method="post" action="mejorarPlanta" onSubmit="validarRecursos(${admin.jardinZen.jardin.recursos})">
+	<form method="post" action="mejorarPlanta" onSubmit="validarRecursos(${admin.jardinZen.jardin.recursos});return false;">
 			<table align="left">
 				<c:if test="${admin.jardinZen.mejorasPredefinidas != null}">
 					<tr>

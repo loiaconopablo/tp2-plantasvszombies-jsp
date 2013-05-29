@@ -44,25 +44,21 @@ public class MejorasServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String mejoraSeleccionada = request.getParameter("mejoraSeleccionada");
 
 		getAdministradorJardinZen(request).buscarYSetearMejora(
 				mejoraSeleccionada);
-		try {
-			getAdministradorJardinZen(request).comprarMejora();
 
-			getAdministradorJardinZen(request).getMejoraSeleccionada()
-					.aplicarMejora(
-							getAdministradorJardinZen(request)
-									.getSemillaSeleccionada());
+		getAdministradorJardinZen(request).comprarMejora();
 
-		} catch (UserException e) {
-			
-		}	
+		getAdministradorJardinZen(request).getMejoraSeleccionada()
+				.aplicarMejora(
+						getAdministradorJardinZen(request)
+								.getSemillaSeleccionada());
+
 		request.getRequestDispatcher("mejoras.jsp").forward(request, response);
-		
-		
+
 	}
 
 	private void actualizarSemillaSeleccionada(HttpServletRequest request) {
@@ -87,9 +83,10 @@ public class MejorasServlet extends HttpServlet {
 		return (AdministradorJardinZen) request.getSession().getAttribute(
 				"adminAppModel");
 	}
-	
-	public int getRecursos(HttpServletRequest request){
-		return getAdministradorJardinZen(request).getPartida().getJardin().getRecursos();
+
+	public int getRecursos(HttpServletRequest request) {
+		return getAdministradorJardinZen(request).getPartida().getJardin()
+				.getRecursos();
 	}
 
 }
