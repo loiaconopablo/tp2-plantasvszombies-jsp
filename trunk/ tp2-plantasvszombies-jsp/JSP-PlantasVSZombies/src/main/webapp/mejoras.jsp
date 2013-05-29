@@ -13,6 +13,24 @@
 	function enabledButton() {
 		document.getElementById('mejorarInput').disabled = false;
 	}
+	function validarRecursos(recursos) {
+		
+		// de donde saque la info http://www.elcodigo.net/tutoriales/jsavanzado/jsavanzado13.html
+		
+ 	    if (recursos <= 0) {
+ 	        alert("No tiene recursos para comprar mejoras");
+ 	        return false;
+ 	        //al poner el false no deberia de continuar son el submit pero continua igual
+ 	    }
+ 	 	//String mejoraSeleccionada = request.getParameter("mejoraSeleccionada");
+		//Mejora mejora = getAdministradorJardinZen(request).buscarMejora(mejoraSeleccionada);
+		//ver como obtener el costo de la mejora seleccionada para poder comparar
+ 	    if (recursos < mejora.costo) {
+ 	        alert("No tiene Recursos para comprar esta mejora en particular");
+ 	        return false;
+	    }
+	  
+	}
 </script>
 <body>
 
@@ -30,7 +48,7 @@
 
 	<div>
 		<h2>Mejoras disponibles:</h2>
-		<form method="post" action="mejorarPlanta">
+		<form method="post" action="mejorarPlanta" onSubmit="validarRecursos(${admin.jardinZen.jardin.recursos})">
 			<table align="left">
 				<c:if test="${admin.jardinZen.mejorasPredefinidas != null}">
 					<tr>

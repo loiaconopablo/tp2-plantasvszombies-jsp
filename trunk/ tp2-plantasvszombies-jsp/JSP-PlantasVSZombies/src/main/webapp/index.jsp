@@ -18,7 +18,7 @@
 <body>
 	<c:set var="admin" value="${sessionScope.adminAppModel}"></c:set>
 	<IMG
-		SRC="http://draving.me/wp-content/uploads/2013/05/Plants-VS-Zombies.png"
+		SRC="Images/logo.png"
 		WIDTH=300 HEIGHT=250 ALT="Logo">
 		<h3>Jardin Zen - ${admin.jardinSelect}</h3>
 		<hr color="Green" width="100%">
@@ -39,7 +39,7 @@
 								href="search?nombre=${param.nombre}&ordenadoPor=danio">Puntos
 									De Danio</a></th>
 							<th><a
-								href="search?nombre=${param.nombre}&oordenadoPor=capacidadDefensiva">Capacidad
+								href="search?nombre=${param.nombre}&ordenadoPor=capDefensiva">Capacidad
 									Defensiva</a></th>
 						</tr>
 
