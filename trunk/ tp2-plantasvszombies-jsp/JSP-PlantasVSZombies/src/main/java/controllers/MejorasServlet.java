@@ -49,16 +49,20 @@ public class MejorasServlet extends HttpServlet {
 
 		getAdministradorJardinZen(request).buscarYSetearMejora(
 				mejoraSeleccionada);
-		
-		getAdministradorJardinZen(request).comprarMejora();
+		try {
+			getAdministradorJardinZen(request).comprarMejora();
 
-		getAdministradorJardinZen(request).getMejoraSeleccionada()
-				.aplicarMejora(
-						getAdministradorJardinZen(request)
-								.getSemillaSeleccionada());
-	
+			getAdministradorJardinZen(request).getMejoraSeleccionada()
+					.aplicarMejora(
+							getAdministradorJardinZen(request)
+									.getSemillaSeleccionada());
+
+		} catch (UserException e) {
+			
+		}	
 		request.getRequestDispatcher("mejoras.jsp").forward(request, response);
-
+		
+		
 	}
 
 	private void actualizarSemillaSeleccionada(HttpServletRequest request) {
