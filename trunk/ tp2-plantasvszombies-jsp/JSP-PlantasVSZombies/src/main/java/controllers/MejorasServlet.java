@@ -45,10 +45,7 @@ public class MejorasServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String mejoraSeleccionada = request.getParameter("mejoraSeleccionada");
-
-		getAdministradorJardinZen(request).buscarYSetearMejora(
-				mejoraSeleccionada);
+		actualizarSemillaSeleccionada(request);
 
 		getAdministradorJardinZen(request).comprarMejora();
 
